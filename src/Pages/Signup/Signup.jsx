@@ -1,17 +1,19 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
-import { updateCurrentUser, updateProfile } from 'firebase/auth';
+import Swal from 'sweetalert2'
 
 
 
 
 const Signup = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const {user, createUser, updateProfile} = useContext(AuthContext)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { createUser, userProfileUpdate} = useContext(AuthContext)
     const [err, setErr] = useState(false)
-    
+    const navigate = useNavigate()
+
+
     const onSubmit = data => {
        const name = data.name;
        const email = data.email;
@@ -21,7 +23,47 @@ const Signup = () => {
         if(password === conPass){
             createUser(email, password)
             .then(()=>{
-                updateProfile(name, photo)
+                userProfileUpdate(name, photo)
+                .then(
+                    ()=>{
+                        const user ={name, email}
+                        fetch('http://localhost:5000/users', {
+                            method: "POST",
+                            headers:{
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(user)
+                        })
+                        .then(res => res.json())
+                        .then(
+                            data => {
+                                if(data.insertedId){
+                                    reset();
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User created successfully.',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    });
+                                    navigate('/');
+                                }
+                            }
+                        )
+                    }
+                )
+                .catch(error => console.log(error))
+            })
+            .catch(error => {
+                // Swal.fire({
+                //     position: 'top-end',
+                //     icon: 'warning',
+                //     title: {error.message},
+                //     showConfirmButton: false,
+                //     timer: 1500
+                // })
+                console.log("what", error.message)
+                alert(error.message)
             })
         }
         else{
