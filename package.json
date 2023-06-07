@@ -10,7 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "dotenv": "^16.1.4",
+=======
+>>>>>>> 35de422f221aa874aad91089550cd758cfb4394d
     "firebase": "^9.22.1",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
