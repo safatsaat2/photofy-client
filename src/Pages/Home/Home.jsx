@@ -1,11 +1,12 @@
+import TopClassSection from "../Class/TopClassSection";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
     return (
         <div>
-            <div>
+
             <Slider></Slider>
-            </div>
+            <TopClassSection></TopClassSection>
         </div>
     );
 };
