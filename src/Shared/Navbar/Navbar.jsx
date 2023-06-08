@@ -1,18 +1,70 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from './../../Pages/Provider/AuthProvider';
+import Swal from "sweetalert2";
 const Navbar = () => {
 
-    const logo = "https://i.ibb.co/sbmVhc6/Frame-6.png"
+    const logo = "https://i.ibb.co/sbmVhc6/Frame-6.png";
+    const { user, logOut } = useContext(AuthContext)
+    const navigate = useNavigate()
+
+
+    const handleLogOut = () =>{
+        logOut()
+        .then(() => {
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: 'Thank You for Log In',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            navigate('/');
+        }
+        )
+        .catch(err => {
+            console.log("what", err.message)
+            alert(err.message)
+        })
+    }
+
 
     const navItems = <>
-        <Link to='/'><li>Home</li></Link>
-        <Link to='/'><li>Instructors</li></Link>
-        <Link to='/'><li>Classes</li></Link>
-        
-        
+        {user ?
+            <>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Home</li></Link>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Instructors</li></Link>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Classes</li></Link>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Dashboard</li></Link></>
+            :
+            <>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Home</li></Link>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Instructors</li></Link>
+                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Classes</li></Link>
+            </>
+        }
+    </>
+
+    const button = <>
+
+        {
+            user ?
+                <>
+                    <img src={user?.photUrl} alt="" />
+                    <button onClick={handleLogOut} className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">Log Out</button>
+                </>
+                :
+                <>
+                    <Link to='login'><button className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">Sign In</button></Link>
+                    <Link to='signup'><button className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">Sign Up</button></Link>
+                </>        
+    }
+
+
     </>
     return (
         <>
-            <div className="navbar bg-base-100">
+            <div className="navbar bg-blue-50">
                 <div className="navbar-start">
                     <div className="dropdown">
                         <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -22,7 +74,7 @@ const Navbar = () => {
                             {navItems}
                         </ul>
                     </div>
-                    <Link><img src={logo} alt="LOGO" /></Link>
+                    <Link><img className="w-3/4" src={logo} alt="LOGO" /></Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -30,7 +82,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <a className="btn">Button</a>
+                    {button}
                 </div>
             </div>
         </>
