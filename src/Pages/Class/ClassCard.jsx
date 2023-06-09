@@ -1,7 +1,6 @@
 
 
 const ClassCard = ({classes}) => {
-    console.log(classes)
     return (
         <div className="card card-compact w-96 bg-base-100 shadow-xl">
             <figure><img className="h-[400px] w-full object-cover" src={classes.image} alt="Picture" /></figure>

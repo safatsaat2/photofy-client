@@ -20,13 +20,14 @@ const Signup = () => {
        const photo = data.photo;
        const password = data.password;
        const conPass = data.conPass;
+       const role ="student"
         if(password === conPass){
             createUser(email, password)
             .then(()=>{
                 userProfileUpdate(name, photo)
                 .then(
                     ()=>{
-                        const user ={name, email}
+                        const user ={name, email, role, photo}
                         fetch('http://localhost:5000/users', {
                             method: "POST",
                             headers:{

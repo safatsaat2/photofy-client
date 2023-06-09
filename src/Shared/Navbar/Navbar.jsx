@@ -15,7 +15,7 @@ const Navbar = () => {
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: 'Thank You for Log In',
+                title: 'Come Again',
                 showConfirmButton: false,
                 timer: 1500
             });
@@ -27,7 +27,6 @@ const Navbar = () => {
             alert(err.message)
         })
     }
-
 
     const navItems = <>
         {user ?
@@ -50,7 +49,7 @@ const Navbar = () => {
         {
             user ?
                 <>
-                    <img src={user?.photUrl} alt="" />
+                    <img className="w-10 h-10 rounded-full mr-2" src={user?.photoURL} alt="" />
                     <button onClick={handleLogOut} className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">Log Out</button>
                 </>
                 :

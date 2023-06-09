@@ -1,4 +1,5 @@
 import TopClassSection from "../Class/TopClassSection";
+import PopularInstrustors from "../Instructor/PopularInstrustors";
 import Slider from "../Slider/Slider";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
 
             <Slider></Slider>
             <TopClassSection></TopClassSection>
+            <PopularInstrustors></PopularInstrustors>
         </div>
     );
 };
