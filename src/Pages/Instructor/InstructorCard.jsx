@@ -1,5 +1,5 @@
 
-const InstructorCard = ({ data }) => {
+const InstructorCard = ({ data, children }) => {
 
     return (
         
@@ -10,8 +10,7 @@ const InstructorCard = ({ data }) => {
                         <h2 className="card-title font-semibold">{data.name}</h2>
                         <p className=""> {data.email}</p>
                     </div>
-
-                    <button className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">See All instructors</button>
+                    {children}
                 </div>
             </div>
 
