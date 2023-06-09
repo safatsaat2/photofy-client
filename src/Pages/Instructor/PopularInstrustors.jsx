@@ -14,7 +14,7 @@ const PopularInstrustors = () => {
 
 
     return (
-        <div>
+        <div className="mt-32">
             <div data-aos="zoom-in" data-aos-duration="10000">
                 <h1 className="text-5xl text-center font-bold text-[#208ACC] mt-20 mb-10">Popular Instructors</h1>
             </div>
