@@ -5,8 +5,8 @@ import WhyUs from "../Whyus/WhyUs";
 
 const Home = () => {
     return (
-        <div>
-
+        <div >
+            
             <Slider></Slider>
             <TopClassSection></TopClassSection>
             <PopularInstrustors></PopularInstrustors>
