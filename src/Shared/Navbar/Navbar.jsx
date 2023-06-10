@@ -34,7 +34,7 @@ const Navbar = () => {
                 <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Home</li></Link>
                 <Link to='/instructor'><li className="px-5 font-medium hover:text-[#20A8CC]">Instructors</li></Link>
                 <Link to='/classes'><li className="px-5 font-medium hover:text-[#20A8CC]">Classes</li></Link>
-                <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Dashboard</li></Link></>
+                <Link to='/dashboard'><li className="px-5 font-medium hover:text-[#20A8CC]">Dashboard</li></Link></>
             :
             <>
                 <Link to='/'><li className="px-5 font-medium hover:text-[#20A8CC]">Home</li></Link>

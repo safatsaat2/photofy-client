@@ -8,7 +8,9 @@ import Swal from 'sweetalert2';
 const Login = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { signIn, googleSignIn } = useContext(AuthContext)
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const from = location.state?.from?.pathname || "/";
 
     const onSubmit = data => {
         const email = data.email;
@@ -23,7 +25,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/');
+                navigate(from, {replace: true});
             })
             .catch(err => {
                 console.log("what", err.message)
@@ -42,7 +44,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate('/');
+                navigate(from, {replace: true});
             }
             )
             .catch(err => {
