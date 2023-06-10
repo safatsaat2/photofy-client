@@ -2,15 +2,26 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ClassesPageCard = ({ data }) => {
 
     const { user } = useContext(AuthContext)
-    const navigate = useNavigate(null)
+    const navigate = useNavigate(null);
+    const [axiosSecure] = useAxiosSecure();
+    console.log(data)
 
     const handleSelection = () => {
+        const img = data.image;
+        const name = data.name;
+        const instructorName = data.instructorName;
+        const price = data.price;
+        const seats = data.seats;
+        const items = {img, name, instructorName, price, seats, email: user?.email}
         if (user) {
-            console.log("hi")
+            axiosSecure.post('/selected-classes', items)
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
         }
         else {
             Swal.fire({

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const DashMenu = () => {
     const isAdmin = false;
@@ -20,7 +21,7 @@ const DashMenu = () => {
                 </>
                 : <>
                 <ul>
-                    <li className="pt-10 px-10">My Selected Classes</li>
+                    <Link to='selected-classes'><li className="pt-10 px-10">My Selected Classes</li></Link>
                     <li className="pt-10 px-10">My Enrolled Classes</li>
                     <li className="pt-10 px-10">Payment History</li>
                 </ul>
