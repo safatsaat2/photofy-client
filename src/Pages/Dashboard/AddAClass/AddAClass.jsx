@@ -2,7 +2,7 @@
 const AddAClass = () => {
     return (
         <div>
-            
+            Hi
         </div>
     );
 };

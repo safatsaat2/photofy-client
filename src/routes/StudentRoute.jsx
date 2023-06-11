@@ -11,7 +11,7 @@ const StudentRoute = ({children}) => {
         return <progress className="progress w-56"></progress>
     }
 
-    if (user && isStudent) {
+    if (user && isStudent.student=== true) {
         return children;
     }
     return <Navigate to="/" state={{from: location}} replace></Navigate>

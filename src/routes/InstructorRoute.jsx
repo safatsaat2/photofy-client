@@ -6,12 +6,11 @@ const InstructorRoute = ({children}) => {
     const { user, loading } = useAuth();
     const [isInstructor, load] = useInstructor();
     const location = useLocation();
-
     if(loading || load){
         return <progress className="progress w-56"></progress>
     }
 
-    if (user && isInstructor) {
+    if (user && isInstructor.instructor === true) {
         return children;
     }
     return <Navigate to="/" state={{from: location}} replace></Navigate>

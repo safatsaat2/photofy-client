@@ -15,7 +15,6 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
 
-// [TODO: BUGFIX: when signing updateProfile, emeail is already taken shown everytime]
     const createUser = (email, pass) => {
         return createUserWithEmailAndPassword(auth, email, pass);
     }
@@ -51,6 +50,7 @@ const AuthProvider = ({ children }) => {
                 })
             }
             else{
+                setLoading(false)
                 localStorage.removeItem("access-token")
             }
         });

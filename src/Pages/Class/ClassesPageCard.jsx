@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
+import useAdmin from "../../hooks/useAdmin";
 
 const ClassesPageCard = ({ data }) => {
 
@@ -10,6 +11,7 @@ const ClassesPageCard = ({ data }) => {
     const navigate = useNavigate(null);
     const [axiosSecure] = useAxiosSecure();
     console.log(data)
+    const [isAdmin] = useAdmin()
 
     const handleSelection = () => {
         const img = data.image;
@@ -51,7 +53,7 @@ const ClassesPageCard = ({ data }) => {
                 <p className="font-medium">Students: {data.student}</p>
                 <p className="font-medium">Price: ${data.price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleSelection} className={data.seats === 0? "btn btn-disabled border-none text-white" : "btn bg-[#20A8CC] hover:bg-[#20A8CC] border-none text-white"}>Select this Class</button>
+                    <button onClick={handleSelection} className={data.seats === 0 ||isAdmin.admin=== true? "btn btn-disabled border-none text-white" : "btn bg-[#20A8CC] hover:bg-[#20A8CC] border-none text-white"}>Select this Class</button>
                 </div>
             </div>
         </div>

@@ -19,7 +19,7 @@ const PopularInstrustors = () => {
                 <h1 className="text-5xl text-center font-bold text-[#208ACC] mt-20 mb-10">Popular Instructors</h1>
 
                 <div className="lg:grid lg:mx-32 grid-cols-2 gap-10">
-                    {instructors.map(instructor => <InstructorCard key={instructor._id} data={instructor}><Link to='/instructor' className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">See All instructors</Link></InstructorCard>)}
+                    {instructors.slice(0, 6).map(instructor => <InstructorCard key={instructor._id} data={instructor}><Link to='/instructor' className="btn bg-[#20A8CC] hover:bg-[#20A8CC] text-white">See All instructors</Link></InstructorCard>)}
                 </div>
 
         </div>
