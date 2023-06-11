@@ -20,7 +20,7 @@ const ClassesPageCard = ({ data }) => {
         const items = {img, name, instructorName, price, seats, email: user?.email}
         if (user) {
             axiosSecure.post('/selected-classes', items)
-            .then(res => console.log(res))
+            .then(data => console.log(data))
             .catch(err => console.log(err))
         }
         else {

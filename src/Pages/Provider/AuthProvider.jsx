@@ -14,6 +14,8 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
+
+// [TODO: BUGFIX: when signing updateProfile, emeail is already taken shown everytime]
     const createUser = (email, pass) => {
         return createUserWithEmailAndPassword(auth, email, pass);
     }
@@ -30,7 +32,7 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
             setUser(currentUser)
-            setLoading(false)
+            
             if (currentUser) {
                 // fetch('http://localhost:5000/jwt', {
                 //     method: "POST",
@@ -42,10 +44,11 @@ const AuthProvider = ({ children }) => {
                 //     .then(res => res.json())
                 //     .then(data => console.log(data))
 
-                axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+                axios.post('http://localhost:5000/jwt', {email: currentUser?.email})
                 .then(data=> {
                     const token = data.data.token;
                     localStorage.setItem("access-token", token)
+                    setLoading(false)
                 })
             }
             else{

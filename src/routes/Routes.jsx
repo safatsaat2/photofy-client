@@ -9,6 +9,7 @@ import InstructorPage from "../Pages/Instructor/InstructorPage";
 import ClassesPage from "../Pages/Class/ClassesPage";
 import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Pages/Dashboard/SelectedClasses";
+import DashHome from "../Pages/Dashboard/DashHome";
 
 export const router = createBrowserRouter([
     {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
                 path: 'dashboard',
                 element: <Dashboard></Dashboard>,
                 children:[
+                    {
+                        path:'/dashboard',
+                        element:<DashHome></DashHome>
+                    },
                     {
                         path: 'selected-classes',
                         element:<SelectedClasses></SelectedClasses>
