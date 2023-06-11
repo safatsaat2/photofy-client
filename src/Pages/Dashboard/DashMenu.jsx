@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 import useStudent from "../../hooks/useStudent";
-import useInstructors from "../../hooks/useInstructors";
+import useInstructor from "../../hooks/useInstructor";
 
 const DashMenu = () => {
     // const isAdmin = true;
@@ -9,7 +9,7 @@ const DashMenu = () => {
 
     const [isAdmin, load] = useAdmin()
     const [isStudent, ] = useStudent()
-    const [isInstructor,] = useInstructors()
+    const [isInstructor,] = useInstructor()
 
 
     if(load){
@@ -20,7 +20,7 @@ const DashMenu = () => {
     return (
         <div className="w-1/4 h-screen bg-slate-700 text-white">
             {
-                isAdmin ? 
+                isAdmin.admin === true ? 
                 <>
                     <ul>
                         <li className="pt-10 px-10">Manage Classes</li>
@@ -28,7 +28,7 @@ const DashMenu = () => {
                     </ul>
                 </>
                     :
-                    isStudent ? 
+                    isStudent.student === true ? 
                     <>
                         <ul>
                             <Link to='selected-classes'><li className="pt-10 px-10">My Selected Classes</li></Link>
@@ -37,7 +37,7 @@ const DashMenu = () => {
                         </ul>
                     </>
                     :
-                       isInstructor ? 
+                       isInstructor.instructor === true ? 
                         <>
                             <ul>
                                 <li className="pt-10 px-10">Add a Class</li>
