@@ -1,8 +1,19 @@
 import { Link } from "react-router-dom";
+import useAdmin from "../../hooks/useAdmin";
+import { BarLoader } from "react-spinner-animated";
 
 const DashMenu = () => {
-    const isAdmin = false;
+    // const isAdmin = true;
     const isInstructor = false;
+
+    const [isAdmin, isAdminLoading] = useAdmin()
+
+    if(isAdminLoading){
+        return <div className="flex justify-center">
+            <BarLoader text={"Please Wait..."} />
+        </div>
+    }
+
     return (
         <div className="w-1/4 h-screen bg-slate-700 text-white">
             {

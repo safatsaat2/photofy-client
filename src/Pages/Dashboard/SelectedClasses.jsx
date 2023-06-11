@@ -3,7 +3,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 import useAxiosSelectedClasses from "../../hooks/useAxiosSelectedClasses";
 import { BarLoader } from 'react-spinner-animated';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
-import axios from "axios";
 import Swal from "sweetalert2";
 
 const SelectedClasses = () => {

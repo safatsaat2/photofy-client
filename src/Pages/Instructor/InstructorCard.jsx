@@ -1,6 +1,9 @@
+import useUsers from "../../hooks/useUsers";
+
 
 const InstructorCard = ({ data, children }) => {
-
+    const [users] = useUsers()
+    console.log(users)
     return (
         
             <div className="card lg:h-[300px] card-side items-center bg-blue-50 shadow-xl">
