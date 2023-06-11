@@ -16,6 +16,7 @@ import AdminRoute from "./AdminRoute";
 import InstructorRoute from "./InstructorRoute";
 import AddAClass from "../Pages/Dashboard/AddAClass/AddAClass";
 import PrivateRoute from "./PrivateRoute";
+import InstructorClasses from "../Pages/Dashboard/InstructorMyClasses/InstructorClasses";
 
 export const router = createBrowserRouter([
     {
@@ -27,8 +28,8 @@ export const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path:'login',
-                element:<Login></Login>
+                path: 'login',
+                element: <Login></Login>
             },
             {
                 path: 'signup',
@@ -45,22 +46,26 @@ export const router = createBrowserRouter([
             {
                 path: 'dashboard',
                 element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
-                children:[
+                children: [
                     {
-                        path:'/dashboard',
-                        element:<DashHome></DashHome>
+                        path: '/dashboard',
+                        element: <DashHome></DashHome>
                     },
                     {
                         path: 'selected-classes',
-                        element:<StudentRoute><SelectedClasses></SelectedClasses></StudentRoute>
+                        element: <StudentRoute><SelectedClasses></SelectedClasses></StudentRoute>
                     },
                     {
                         path: 'manage-users',
-                        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute> 
+                        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute>
                     },
                     {
-                        path:'addaclass',
-                        element:<InstructorRoute><AddAClass></AddAClass></InstructorRoute>
+                        path: 'addaclass',
+                        element: <InstructorRoute><AddAClass></AddAClass></InstructorRoute>
+                    },
+                    {
+                        path: 'instructor-classes',
+                        element: <InstructorRoute><InstructorClasses></InstructorClasses></InstructorRoute>
                     }
                 ]
             }

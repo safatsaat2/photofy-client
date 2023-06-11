@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 const AddAClass = () => {
     const [axiosSecure] = useAxiosSecure()
     const { user } = useAuth()
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit,  } = useForm();
     const onSubmit = data => {
         const className = data.className;
         const classImage = data.classImage;

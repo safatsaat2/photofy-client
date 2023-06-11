@@ -41,7 +41,7 @@ const DashMenu = () => {
                         <>
                             <ul>
                                 <Link to='addaclass'><li className="pt-10 px-10">Add a Class</li></Link>
-                                <li className="pt-10 px-10">My Classes</li>
+                               <Link to='instructor-classes'><li className="pt-10 px-10">My Classes</li></Link>
                             </ul>
 
                         </>
