@@ -14,7 +14,7 @@ const useUsers = () => {
             return res.json();
         }
     })
-    return [users, loading, refetch]
+    return [users,  refetch,loading]
 };
 
 export default useUsers;

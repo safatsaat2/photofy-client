@@ -34,7 +34,7 @@ const SelectedClasses = () => {
                             'Your file has been deleted.',
                             'success'
                           )
-                        refetch()
+                        refetch();
                     }
                 })
               
@@ -59,7 +59,7 @@ const SelectedClasses = () => {
                             <th>
                                 #
                             </th>
-                            <th>Image</th>
+                            <th>Photo</th>
                             <th>Class Name</th>
                             <th>Price</th>
                             <th>Payment</th>

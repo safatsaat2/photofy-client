@@ -7,7 +7,7 @@ const useStudent = () => {
     const {user} = useContext(AuthContext);
 
 
-    const { data: isIntrustor = [], isLoading: loadg, refetch } = useQuery({
+    const { data: isStudent = [], isLoading: load, refetch } = useQuery({
         queryKey: ["student"],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/users/student/${user?.email}`, {
@@ -18,8 +18,8 @@ const useStudent = () => {
             return res.json();
         }
     })
-    console.log(isIntrustor)
-    return [isIntrustor, loadg, refetch]
+    console.log(isStudent)
+    return [isStudent, load, refetch]
 };
 
 export default useStudent;

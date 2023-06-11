@@ -11,6 +11,8 @@ import Dashboard from "../Layout/Dashboard";
 import SelectedClasses from "../Pages/Dashboard/SelectedClasses";
 import DashHome from "../Pages/Dashboard/DashHome";
 import StudentRoute from "./studentRoute";
+import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
+import AdminRoute from "./AdminRoute";
 
 export const router = createBrowserRouter([
     {
@@ -49,6 +51,10 @@ export const router = createBrowserRouter([
                         path: 'selected-classes',
                         element:<StudentRoute><SelectedClasses></SelectedClasses></StudentRoute>
                     },
+                    {
+                        path: 'manage-users',
+                        element: <AdminRoute><ManageUsers></ManageUsers></AdminRoute> 
+                    }
                 ]
             }
         ]
