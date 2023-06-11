@@ -13,18 +13,13 @@ const ManageUsers = () => {
 
     const handleAdmin = (user) =>{
         axiosSecure.patch(`http://localhost:5000/users/admin/${user._id}`)
-        .then(res => console.log(res)
-            // {
-            //     console.log("res", res);
-            //     if(res){
-            //         Swal.fire(
-            //             'Made successfully',
-            //             'Admin Now',
-            //             'success'
-            //           );
-            //           refetch();
-            //     }
-            // }
+        .then(res => {
+            if(res.data.modifiedCount){
+                Swal.fire(`${user.name} is Admin Now`)
+                refetch()
+            }
+        }
+            
             
             )
     }
@@ -32,13 +27,9 @@ const ManageUsers = () => {
         axiosSecure.patch(`http://localhost:5000/users/instructor/${user._id}`)
         .then(res => 
             {
-                if(res === undefined){
-                    Swal.fire(
-                        'Made successfully',
-                        'Admin Now',
-                        'success'
-                      );
-                      refetch();
+                if(res.data.modifiedCount){
+                    Swal.fire(`${user.name} is Instructor Now`)
+                    refetch()
                 }
             }
             

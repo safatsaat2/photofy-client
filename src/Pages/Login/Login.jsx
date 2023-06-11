@@ -25,7 +25,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.log("what", err.message)
@@ -44,7 +44,7 @@ const Login = () => {
                     showConfirmButton: false,
                     timer: 1500
                 });
-                navigate(from, {replace: true});
+                navigate(from, { replace: true });
             }
             )
             .catch(err => {

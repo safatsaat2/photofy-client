@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import useAdmin from "../../hooks/useAdmin";
+import useInstructor from "../../hooks/useInstructor";
 
 const ClassesPageCard = ({ data }) => {
 
@@ -12,6 +13,7 @@ const ClassesPageCard = ({ data }) => {
     const [axiosSecure] = useAxiosSecure();
     console.log(data)
     const [isAdmin] = useAdmin()
+    const [isInstructor] = useInstructor()
 
     const handleSelection = () => {
         const img = data.image;
@@ -22,7 +24,15 @@ const ClassesPageCard = ({ data }) => {
         const items = {img, name, instructorName, price, seats, email: user?.email}
         if (user) {
             axiosSecure.post('/selected-classes', items)
-            .then(data => console.log(data))
+            .then(data => {
+                if(data.data.insertedId){
+                    Swal.fire(
+                        'Added',
+                        'Added to My Selected Classes',
+                        'success'
+                      )
+                }
+            })
             .catch(err => console.log(err))
         }
         else {
@@ -53,7 +63,7 @@ const ClassesPageCard = ({ data }) => {
                 <p className="font-medium">Students: {data.student}</p>
                 <p className="font-medium">Price: ${data.price}</p>
                 <div className="card-actions justify-end">
-                    <button onClick={handleSelection} className={data.seats === 0 ||isAdmin.admin=== true? "btn btn-disabled border-none text-white" : "btn bg-[#20A8CC] hover:bg-[#20A8CC] border-none text-white"}>Select this Class</button>
+                    <button onClick={handleSelection} className={data.seats === 0 ||isAdmin.admin=== true || isInstructor.instructor === true? "btn btn-disabled border-none text-white" : "btn bg-[#20A8CC] hover:bg-[#20A8CC] border-none text-white"}>Select this Class</button>
                 </div>
             </div>
         </div>
