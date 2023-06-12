@@ -47,7 +47,7 @@ const InstructorClasses = () => {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={cls.classImage} alt="Avatar Tailwind CSS Component" />
+                                            <img src={cls.image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                 </div>
@@ -75,7 +75,7 @@ const InstructorClasses = () => {
                                 <Link to='update-class' state={cls._id}><button  className="btn btn-ghost btn-xs">Update</button></Link>
                             </th>
                             <th>
-                                
+                                <p className="font-bold">{cls.feed}</p>
                             </th>
                         </tr>)}
 

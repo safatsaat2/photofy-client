@@ -15,15 +15,14 @@ const AddAClass = () => {
         const seats = data.seats;
         const price = data.price;
 
-        const info = {name: className ,image: classImage,instructorName: name, email, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', student: 0}
+        const info = {name: className ,image: classImage,instructorName: name, email, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', student: 0, feed:  ""}
 
         axiosSecure.post('pending-classes', info)
         .then(res => {
             if(res.data.insertedId){
                 Swal.fire('Your Class is in pending')
             }
-        })
-       
+        })   
     };
     return (
         <div className="w-full">

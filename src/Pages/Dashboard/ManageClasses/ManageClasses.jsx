@@ -118,7 +118,7 @@ const ManageClasses = () => {
                                 <button onClick={() => handleApprove(cls)} className="btn btn-ghost btn-xs">Approve</button>
                             </th>
                             <th>
-                                <Link to='feedback'><button className="btn btn-ghost btn-xs">Deny</button></Link>
+                                <Link to='feedback' state={cls._id}><button className="btn btn-ghost btn-xs">Deny</button></Link>
                             </th>
                         </tr>)}
 
