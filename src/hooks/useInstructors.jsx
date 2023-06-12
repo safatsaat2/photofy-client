@@ -5,7 +5,7 @@ const useInstructors = () => {
         const {data: instructors = [], isLoading: loading, refetch} = useQuery({
             queryKey: ["instructors"],
             queryFn: async () => {
-             const res = await fetch('http://localhost:5000/instructor');
+             const res = await fetch('https://photofy-server.vercel.app/instructor');
             return res.json();
             }
         })

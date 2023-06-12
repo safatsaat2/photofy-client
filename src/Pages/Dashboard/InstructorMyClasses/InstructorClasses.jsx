@@ -8,7 +8,7 @@ const InstructorClasses = () => {
     const { user } = useAuth()
     const [classes, setClasses] = useState([])
 
-    axios.get(`http://localhost:5000/pending-classes/${user?.email}`, {
+    axios.get(`https://photofy-server.vercel.app/pending-classes/${user?.email}`, {
         headers:{
             Authorization: `bearer ${token}`
         }

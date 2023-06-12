@@ -25,7 +25,7 @@ const SelectedClasses = () => {
             confirmButtonText: 'Yes, delete it!'
           }).then((result) => {
             if (result.isConfirmed) {
-                axiosSecure.delete(`http://localhost:5000/selected-classes/${cls._id}`)
+                axiosSecure.delete(`https://photofy-server.vercel.app/selected-classes/${cls._id}`)
                 .then(res => {
                     if(res.data.deletedCount){
                         Swal.fire(

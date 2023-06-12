@@ -33,7 +33,7 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser)
             
             if (currentUser) {
-                // fetch('http://localhost:5000/jwt', {
+                // fetch('https://photofy-server.vercel.app/jwt', {
                 //     method: "POST",
                 //     headers: {
                 //         'content-type': 'application/json'
@@ -43,7 +43,7 @@ const AuthProvider = ({ children }) => {
                 //     .then(res => res.json())
                 //     .then(data => console.log(data))
 
-                axios.post('http://localhost:5000/jwt', {email: currentUser?.email})
+                axios.post('https://photofy-server.vercel.app/jwt', {email: currentUser?.email})
                 .then(data=> {
                     localStorage.setItem("access-token", data.data.token)
                     setLoading(false)

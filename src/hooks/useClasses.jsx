@@ -6,7 +6,7 @@ const useClasses = () => {
     const {data: classes = [], isLoading: loading, refetch} = useQuery({
         queryKey: ["classes"],
         queryFn: async () => {
-         const res = await fetch('http://localhost:5000/classes', {headers:{
+         const res = await fetch('https://photofy-server.vercel.app/classes', {headers:{
             authorization : `bearer ${token}`
          }});
         return res.json();

@@ -28,7 +28,7 @@ const Signup = () => {
                 .then(
                     ()=>{
                         const user ={name, email, role, photo}
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://photofy-server.vercel.app/users', {
                             method: "POST",
                             headers:{
                                 'content-type': 'application/json'

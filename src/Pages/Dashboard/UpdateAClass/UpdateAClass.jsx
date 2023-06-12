@@ -16,7 +16,7 @@ const UpdateAClass = () => {
     const {data: clas = [],} = useQuery({
         queryKey: ["classes"],
         queryFn: async () => {
-         const res = await fetch(`http://localhost:5000/classes/${id}`, {headers:{
+         const res = await fetch(`https://photofy-server.vercel.app/classes/${id}`, {headers:{
             authorization : `bearer ${token}`
          }});
         return res.json();

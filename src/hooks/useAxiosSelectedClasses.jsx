@@ -4,7 +4,7 @@ const useAxiosSelectedClasses = (email) => {
         const { data: classes = [], isLoading: loading, refetch } = useQuery({
         queryKey: ["selectedClasses"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/selected-classes/${email}`);
+            const res = await fetch(`https://photofy-server.vercel.app/selected-classes/${email}`);
             return res.json();
         }
     })

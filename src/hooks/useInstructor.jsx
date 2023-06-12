@@ -10,7 +10,7 @@ const useInstructor = () => {
     const { data: isInstructor = [], isLoading: load, } = useQuery({
         queryKey: ["instructor"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users/instructor/${user?.email}`, {
+            const res = await fetch(`https://photofy-server.vercel.app/users/instructor/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }

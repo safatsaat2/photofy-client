@@ -15,7 +15,7 @@ const CheckOutForm = ({ price }) => {
 
     useEffect(() => {
         console.log(price)
-        axios.post('http://localhost:5000/create-payment-intent', {
+        axios.post('https://photofy-server.vercel.app/create-payment-intent', {
             headers:{
                 Authorization:` bearer ${token}`
             },

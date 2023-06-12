@@ -12,7 +12,7 @@ const ManageUsers = () => {
     //     }
 
     const handleAdmin = (user) =>{
-        axiosSecure.patch(`http://localhost:5000/users/admin/${user._id}`)
+        axiosSecure.patch(`https://photofy-server.vercel.app/users/admin/${user._id}`)
         .then(res => {
             if(res.data.modifiedCount){
                 Swal.fire(`${user.name} is Admin Now`)
@@ -24,7 +24,7 @@ const ManageUsers = () => {
             )
     }
     const handleInstructor = (user) =>{
-        axiosSecure.patch(`http://localhost:5000/users/instructor/${user._id}`)
+        axiosSecure.patch(`https://photofy-server.vercel.app/users/instructor/${user._id}`)
         .then(res => 
             {
                 if(res.data.modifiedCount){

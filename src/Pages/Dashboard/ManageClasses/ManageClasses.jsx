@@ -16,7 +16,7 @@ const ManageClasses = () => {
     const { data: classes = [], refetch } = useQuery({
         queryKey: ["classes"],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/pending-classes/pending/${user?.email}`, {
+            const res = await fetch(`https://photofy-server.vercel.app/pending-classes/pending/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${token}`
                 }
@@ -64,7 +64,7 @@ const ManageClasses = () => {
     }
 
 
-    // axios.get(`http://localhost:5000/pending-classes/pending/${user?.email}`, {
+    // axios.get(`https://photofy-server.vercel.app/pending-classes/pending/${user?.email}`, {
     //     headers: {
     //         Authorization: `bearer ${token}`
     //     }
