@@ -38,9 +38,9 @@ const ManageClasses = () => {
                             if (res.data.insertedId) {
                                 Swal.fire(
                                     'Approved',
-                                    
+
                                     'success'
-                                  )
+                                )
                                 refetch()
                             }
                         })
@@ -48,7 +48,20 @@ const ManageClasses = () => {
             })
 
     }
+    // denied
 
+    const handleDeny = id =>{
+        axiosSecure.patch(`/feedback/${id}`,)
+        .then(res => {
+            if (res.data.modifiedCount) {
+                Swal.fire(
+                    'You denied',
+                    'success'
+                )
+                refetch()
+            }
+        })
+    }
 
 
     // axios.get(`http://localhost:5000/pending-classes/pending/${user?.email}`, {
@@ -79,6 +92,7 @@ const ManageClasses = () => {
                             <th>Status</th>
                             <th>Approve</th>
                             <th>Deny</th>
+                            <th>Feedback</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,7 +104,7 @@ const ManageClasses = () => {
                                 <div className="flex items-center space-x-3">
                                     <div className="avatar">
                                         <div className="mask mask-squircle w-12 h-12">
-                                            <img src={cls.classImage} alt="Avatar Tailwind CSS Component" />
+                                            <img src={cls.image} alt="Avatar Tailwind CSS Component" />
                                         </div>
                                     </div>
                                 </div>
@@ -115,10 +129,33 @@ const ManageClasses = () => {
                                 <p>{cls.status}</p>
                             </th>
                             <th>
-                                <button onClick={() => handleApprove(cls)} className="btn btn-ghost btn-xs">Approve</button>
+                                {
+                                    cls.status === "denied"
+                                        ?
+                                        <button disabled='disabled'>Approved</button>
+                                        :
+                                        <button onClick={() => handleApprove(cls)} className="btn bg-[#20A8CC]">Approve</button>
+                                }
                             </th>
                             <th>
-                                <Link to='feedback' state={cls._id}><button className="btn btn-ghost btn-xs">Deny</button></Link>
+                                {
+                                    cls.status === "denied"
+                                        ?
+                                        <button disabled='disabled'>Deny</button>
+                                        :
+                                        <button onClick={()=>handleDeny(cls._id)} className="btn bg-[#20A8CC]">Deny</button>
+                                }
+
+                            </th>
+                            <th>
+                                {
+                                    cls.status === "denied"
+                                        ?
+                                        <button disabled='disabled'>Feedback</button>
+                                        :
+                                        <Link to='feedback' state={cls._id}><button className="btn bg-[#20A8CC]">Feedback</button></Link>
+                                }
+
                             </th>
                         </tr>)}
 

@@ -54,7 +54,7 @@ const ClassesPageCard = ({ data }) => {
 
 
     return (
-        <div className="card w-80 h-[700px] bg-blue-50 shadow-xl">
+        <div className={data.seats === 0 ? "card w-80 h-[700px] bg-red-500 shadow-xl" : "card w-80 h-[700px] bg-blue-50 shadow-xl"}>
             <figure><img className="w-full h-[400px]" src={data.image} alt="Shoes" /></figure>
             <div className="card-body">
                 <h2 className="card-title">{data.name}</h2>
