@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const ManageClasses = () => {
     const { user } = useAuth()
@@ -95,7 +96,7 @@ const ManageClasses = () => {
                                 </div>
                             </td>
                             <td>
-                                <p className="font-bold">{cls.className}</p>
+                                <p className="font-bold">{cls.name}</p>
                             </td>
                             <td>
                                 <p className="font-bold">{cls.seats}</p>
@@ -104,7 +105,7 @@ const ManageClasses = () => {
                                 <p className="font-bold">{cls.student}</p>
                             </td>
                             <td>
-                                <p className="font-bold">{cls.name}</p>
+                                <p className="font-bold">{cls.instructorName}</p>
                             </td>
                             <td>
                                 <p className="font-bold">{cls.email}</p>
@@ -117,7 +118,7 @@ const ManageClasses = () => {
                                 <button onClick={() => handleApprove(cls)} className="btn btn-ghost btn-xs">Approve</button>
                             </th>
                             <th>
-                                <button className="btn btn-ghost btn-xs">Deny</button>
+                                <Link to='feedback'><button className="btn btn-ghost btn-xs">Deny</button></Link>
                             </th>
                         </tr>)}
 

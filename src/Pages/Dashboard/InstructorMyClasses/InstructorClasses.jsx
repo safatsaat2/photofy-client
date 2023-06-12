@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 const InstructorClasses = () => {
     const token = localStorage.getItem("access-token")
@@ -34,6 +35,7 @@ const InstructorClasses = () => {
                             <th>Price</th>
                             <th>Status</th>
                             <th>Update</th>
+                            <th>FeedBack</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,7 +53,7 @@ const InstructorClasses = () => {
                                 </div>
                             </td>
                             <td>
-                                <p className="font-bold">{cls.className}</p>
+                                <p className="font-bold">{cls.name}</p>
                             </td>
                             <td>
                                 <p className="font-bold">{cls.seats}</p>
@@ -60,7 +62,7 @@ const InstructorClasses = () => {
                                 <p className="font-bold">{cls.student}</p>
                             </td>
                             <td>
-                                <p className="font-bold">{cls.name}</p>
+                                <p className="font-bold">{cls.instructorName}</p>
                             </td>
                             <td>
                                 <p className="font-bold">{cls.email}</p>
@@ -70,7 +72,10 @@ const InstructorClasses = () => {
                                <p>{cls.status}</p>
                             </th>
                             <th>
-                                <button  className="btn btn-ghost btn-xs">Update</button>
+                                <Link to='update-class' state={cls._id}><button  className="btn btn-ghost btn-xs">Update</button></Link>
+                            </th>
+                            <th>
+                                
                             </th>
                         </tr>)}
 

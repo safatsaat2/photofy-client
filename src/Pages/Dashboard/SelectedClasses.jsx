@@ -4,6 +4,7 @@ import useAxiosSelectedClasses from "../../hooks/useAxiosSelectedClasses";
 import { BarLoader } from 'react-spinner-animated';
 import useAxiosSecure from './../../hooks/useAxiosSecure';
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const SelectedClasses = () => {
     const { user } = useContext(AuthContext);
@@ -84,7 +85,7 @@ const SelectedClasses = () => {
                             </td>
                             <td>${cls.price}</td>
                             <th>
-                                <button className="btn btn-ghost btn-xs">Pay</button>
+                                <Link to="payment" state={cls.price}><button className="btn btn-ghost btn-xs">Pay</button></Link>
                             </th>
                             <th>
                                 <button onClick={() => handleDelete(cls)} className="btn btn-ghost btn-xs">Delete</button>
