@@ -1,19 +1,62 @@
-import { useState } from "react";
+// import axios from "axios";
 import useAuth from "../../../hooks/useAuth";
-import axios from "axios";
+// import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-const InstructorClasses = () => {
-    const token = localStorage.getItem("access-token")
+const ManageClasses = () => {
     const { user } = useAuth()
-    const [classes, setClasses] = useState([])
+    // const [classes, setClasses] = useState([])
+    const token = localStorage.getItem("access-token")
+    const [axiosSecure] = useAxiosSecure()
 
-    axios.get(`http://localhost:5000/pending-classes/${user?.email}`, {
-        headers:{
-            Authorization: `bearer ${token}`
+
+    const { data: classes = [], refetch } = useQuery({
+        queryKey: ["classes"],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/pending-classes/pending/${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${token}`
+                }
+            });
+            return res.json();
         }
     })
-        .then(res => setClasses(res.data))
+    console.log(classes)
 
+    // Approve 
+    const handleApprove = (cls) => {
+        axiosSecure.patch(`pending-classes/${cls._id}`)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    axiosSecure.post(`/classes/${cls._id}`)
+                        .then(res => {
+                            const data = res.data
+                            console.log(data)
+                            if (res.data.insertedId) {
+                                Swal.fire(
+                                    'Approved',
+                                    
+                                    'success'
+                                  )
+                                refetch()
+                            }
+                        })
+                }
+            })
+
+    }
+
+
+
+    // axios.get(`http://localhost:5000/pending-classes/pending/${user?.email}`, {
+    //     headers: {
+    //         Authorization: `bearer ${token}`
+    //     }
+    // })
+    //     .then(res => {
+    //         setClasses(res.data)})
 
     return (
         <div className="w-full">
@@ -33,7 +76,8 @@ const InstructorClasses = () => {
                             <th>Instructor Email</th>
                             <th>Price</th>
                             <th>Status</th>
-                            <th>Update</th>
+                            <th>Approve</th>
+                            <th>Deny</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,10 +111,13 @@ const InstructorClasses = () => {
                             </td>
                             <td>${cls.price}</td>
                             <th>
-                               <p>{cls.status}</p>
+                                <p>{cls.status}</p>
                             </th>
                             <th>
-                                <button  className="btn btn-ghost btn-xs">Update</button>
+                                <button onClick={() => handleApprove(cls)} className="btn btn-ghost btn-xs">Approve</button>
+                            </th>
+                            <th>
+                                <button className="btn btn-ghost btn-xs">Deny</button>
                             </th>
                         </tr>)}
 
@@ -82,4 +129,4 @@ const InstructorClasses = () => {
     );
 };
 
-export default InstructorClasses;
+export default ManageClasses;

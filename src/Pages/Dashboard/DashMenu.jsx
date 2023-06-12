@@ -8,11 +8,11 @@ const DashMenu = () => {
 
 
     const [isAdmin, load] = useAdmin()
-    const [isStudent, ] = useStudent()
+    const [isStudent,] = useStudent()
     const [isInstructor,] = useInstructor()
 
 
-    if(load){
+    if (load) {
         return <div>Loading....</div>
     }
 
@@ -20,33 +20,33 @@ const DashMenu = () => {
     return (
         <div className="w-1/4 h-screen bg-slate-700 text-white">
             {
-                isAdmin.admin === true ? 
-                <>
-                    <ul>
-                        <li className="pt-10 px-10">Manage Classes</li>
-                        <Link to='manage-users'><li className="pt-10 px-10">Manage Users</li></Link>
-                    </ul>
-                </>
-                    :
-                    isStudent.student === true ? 
+                isAdmin.admin === true ?
                     <>
                         <ul>
-                            <Link to='selected-classes'><li className="pt-10 px-10">My Selected Classes</li></Link>
-                            <li className="pt-10 px-10">My Enrolled Classes</li>
-                            <li className="pt-10 px-10">Payment History</li>
+                            <Link to='manage-classes'> <li className="pt-10 px-10">Manage Classes</li></Link>
+                            <Link to='manage-users'><li className="pt-10 px-10">Manage Users</li></Link>
                         </ul>
                     </>
                     :
-                       isInstructor.instructor === true ? 
+                    isStudent.student === true ?
                         <>
                             <ul>
-                                <Link to='addaclass'><li className="pt-10 px-10">Add a Class</li></Link>
-                               <Link to='instructor-classes'><li className="pt-10 px-10">My Classes</li></Link>
+                                <Link to='selected-classes'><li className="pt-10 px-10">My Selected Classes</li></Link>
+                                <li className="pt-10 px-10">My Enrolled Classes</li>
+                                <li className="pt-10 px-10">Payment History</li>
                             </ul>
-
                         </>
                         :
-                        <></>
+                        isInstructor.instructor === true ?
+                            <>
+                                <ul>
+                                    <Link to='addaclass'><li className="pt-10 px-10">Add a Class</li></Link>
+                                    <Link to='instructor-classes'><li className="pt-10 px-10">My Classes</li></Link>
+                                </ul>
+
+                            </>
+                            :
+                            <></>
             }
         </div>
     );

@@ -15,7 +15,7 @@ const AddAClass = () => {
         const seats = data.seats;
         const price = data.price;
 
-        const info = {className, classImage, name, email, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', student: 0}
+        const info = {name: className ,image: classImage,instructorName: name, email, seats: parseFloat(seats), price: parseFloat(price), status: 'pending', student: 0}
 
         axiosSecure.post('pending-classes', info)
         .then(res => {
