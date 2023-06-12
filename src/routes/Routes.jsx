@@ -21,6 +21,7 @@ import ManageClasses from "../Pages/Dashboard/ManageClasses/ManageClasses";
 import Payment from "../Pages/Dashboard/Payment/Payment";
 import UpdateAClass from "../Pages/Dashboard/UpdateAClass/UpdateAClass";
 import Feedback from "../Pages/Dashboard/Feedback/Feedback";
+import NotFound from "../Pages/Slider/NotFound/NotFound";
 
 export const router = createBrowserRouter([
     {
@@ -91,4 +92,8 @@ export const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: '*',
+        element:<NotFound></NotFound>
+    }
 ]);

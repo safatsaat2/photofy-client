@@ -7,7 +7,7 @@ const Main = () => {
     const [dark, setDark] = useState(false)
     return (
         <div className={dark? 'bg-slate-900': ''}>
-            <button className="absolute text-center" onClick={()=>setDark(!dark)}>dakr</button>
+            <button className="btn text-center ml-20" onClick={()=>setDark(!dark)}>tap for dark mode</button>
             <Navbar></Navbar>
             <Outlet></Outlet>
             <Footer></Footer>

@@ -2,12 +2,14 @@ import { FaPeopleCarry } from "react-icons/fa";
 import useInstructors from "../../hooks/useInstructors";
 import useClasses from "../../hooks/useClasses";
 import { Link } from "react-router-dom";
+import { Zoom } from "react-awesome-reveal";
 
 const WhyUs = () => {
     const [instructors] = useInstructors()
     const [classes] = useClasses()
     return (
-        <div className="my-32 lg:flex">
+        <Zoom>
+            <div className="my-32 lg:flex">
                 <div className="relative w-1/2">
                     <img className="rounded-br-lg rounded-tr-lg" src="https://i.ibb.co/WkhYdpx/image.png" alt="" />
                     <div className="bg-[#80d9f1] rounded-md drop-shadow-2xl absolute top-20 -right-10">
@@ -30,7 +32,8 @@ const WhyUs = () => {
                     <Link to='/classes' className="btn text-white hover:bg-[#20A8CC] bg-[#20A8CC]">See All Classes</Link>
                 </div>
 
-        </div>
+            </div>
+        </Zoom>
     );
 };
 

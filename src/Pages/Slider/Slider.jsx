@@ -9,25 +9,25 @@ const Slider = () => {
                     <div className="absolute flex flex-col">
                         <h1 className="lg:text-5xl font-semibold w-1/2 my-16 mx-28"><span className="text-[#20A8CC]">Unleash the beauty </span> through the lens: Capturing lifes moments with passion.</h1>
                         <div className="lg:w-1/3 mx-28 grid grid-cols-2 gap-6">
-                            <div className="bg-[#80d9f1] rounded-md">
+                            <div className="bg-[#80d9f1] rounded-md hidden lg:block">
                                 <div className="px-5 py-2 text-center text-white">
                                     <p className="font-semibold"><FaPeopleCarry className="inline"></FaPeopleCarry> Students</p>
                                     <p className="font-semibold">100</p>
                                 </div>
                             </div>
-                            <div className="bg-[#80d9f1] rounded-sm">
+                            <div className="bg-[#80d9f1] rounded-sm hidden lg:block">
                                 <div className="px-5 py-2 text-center text-white">
                                     <p className="font-semibold"><FaPeopleCarry className="inline"></FaPeopleCarry> Intructors</p>
                                     <p className="font-semibold">10</p>
                                 </div>
                             </div>
-                            <div className="bg-[#80d9f1] rounded-sm">
+                            <div className="bg-[#80d9f1] rounded-sm hidden lg:block">
                                 <div className="px-5 py-2 text-center text-white">
                                     <p className="font-semibold"><FaPeopleCarry className="inline"></FaPeopleCarry> Scolarship</p>
                                     <p className="font-semibold">54</p>
                                 </div>
                             </div>
-                            <div className="bg-[#80d9f1] rounded-sm">
+                            <div className="bg-[#80d9f1] rounded-sm hidden lg:block">
                                 <div className="px-5 py-2 text-center text-white">
                                     <p className="font-semibold"><FaPeopleCarry className="inline"></FaPeopleCarry> Scolarship</p>
                                     <p className="font-semibold">54</p>

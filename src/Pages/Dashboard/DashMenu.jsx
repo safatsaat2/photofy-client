@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import useAdmin from "../../hooks/useAdmin";
 import useStudent from "../../hooks/useStudent";
 import useInstructor from "../../hooks/useInstructor";
+import { FaAddressBook, FaClinicMedical, FaHeadSideMask, FaHistory, FaUser } from "react-icons/fa";
 
 const DashMenu = () => {
     // const isAdmin = true;
@@ -23,25 +24,25 @@ const DashMenu = () => {
                 isAdmin.admin === true ?
                     <>
                         <ul>
-                            <Link to='manage-classes'> <li className="pt-10 px-10">Manage Classes</li></Link>
-                            <Link to='manage-users'><li className="pt-10 px-10">Manage Users</li></Link>
+                            <Link className=" flex items-center" to='manage-classes'> <li className="pt-10 px-10">Manage Classes <FaClinicMedical></FaClinicMedical></li> </Link>
+                            <Link className=" flex items-center" to='manage-users'><li className="pt-10 px-10">Manage Users <FaUser></FaUser></li> </Link>
                         </ul>
                     </>
                     :
                     isStudent.student === true ?
                         <>
                             <ul>
-                                <Link to='selected-classes'><li className="pt-10 px-10">My Selected Classes</li></Link>
-                                <li className="pt-10 px-10">My Enrolled Classes</li>
-                                <li className="pt-10 px-10">Payment History</li>
+                                <Link className=" flex items-center" to='selected-classes'><li className="pt-10 px-10">My Selected Classes <FaClinicMedical></FaClinicMedical></li></Link>
+                                <li className="pt-10 px-10">My Enrolled Classes <FaHeadSideMask></FaHeadSideMask></li>
+                                <li className="pt-10 px-10">Payment History <FaHistory></FaHistory></li>
                             </ul>
                         </>
                         :
                         isInstructor.instructor === true ?
                             <>
                                 <ul>
-                                    <Link to='addaclass'><li className="pt-10 px-10">Add a Class</li></Link>
-                                    <Link to='instructor-classes'><li className="pt-10 px-10">My Classes</li></Link>
+                                    <Link className=" flex items-center" to='addaclass'><li className="pt-10 px-10">Add a Class <FaAddressBook></FaAddressBook> </li></Link>
+                                    <Link className=" flex items-center" to='instructor-classes'><li className="pt-10 px-10">My Classes <FaClinicMedical></FaClinicMedical></li></Link>
                                 </ul>
 
                             </>
